@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>游凯超谈 vLLM、Inferact、开源 AI Infra 与模型 Co-design：近三小时访谈详细总结 | weiasd‘s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="元数据   项目 内容    视频标识 BV18Qg96YE1W   嘉宾 游凯超   访谈中的身份 Inferact 联合创始人兼首席科学家，vLLM 核心维护者   主题 vLLM 的技术与社区演进、Inferact 的成立、开源治理、模型&#x2F;Infra&#x2F;Harness&#x2F;硬件协同设计   内容依据 &#x2F;tmp&#x2F;bili_vllm&#x2F;episode_transcript_">
+<meta property="og:type" content="article">
+<meta property="og:title" content="游凯超谈 vLLM、Inferact、开源 AI Infra 与模型 Co-design：近三小时访谈详细总结">
+<meta property="og:url" content="https://weiasd.github.io/2026/11/03/vllm-inferact-you-kaichao/index.html">
+<meta property="og:site_name" content="weiasd‘s blog">
+<meta property="og:description" content="元数据   项目 内容    视频标识 BV18Qg96YE1W   嘉宾 游凯超   访谈中的身份 Inferact 联合创始人兼首席科学家，vLLM 核心维护者   主题 vLLM 的技术与社区演进、Inferact 的成立、开源治理、模型&#x2F;Infra&#x2F;Harness&#x2F;硬件协同设计   内容依据 &#x2F;tmp&#x2F;bili_vllm&#x2F;episode_transcript_">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-11-03T01:19:34.000Z">
+<meta property="article:modified_time" content="2026-11-03T01:19:34.331Z">
+<meta property="article:author" content="weiasd">
+<meta property="article:tag" content="AI Infra">
+<meta property="article:tag" content="vLLM">
+<meta property="article:tag" content="推理优化">
+<meta property="article:tag" content="播客总结">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="weiasd‘s blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">weiasd‘s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://weiasd.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-vllm-inferact-you-kaichao" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/11/03/vllm-inferact-you-kaichao/" class="article-date">
+  <time class="dt-published" datetime="2026-11-03T01:19:34.000Z" itemprop="datePublished">2026-11-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%92%AD%E5%AE%A2%E6%80%BB%E7%BB%93/">播客总结</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      游凯超谈 vLLM、Inferact、开源 AI Infra 与模型 Co-design：近三小时访谈详细总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="元数据"><a href="#元数据" class="headerlink" title="元数据"></a>元数据</h2><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>视频标识</td>
+<td>BV18Qg96YE1W</td>
+</tr>
+<tr>
+<td>嘉宾</td>
+<td>游凯超</td>
+</tr>
+<tr>
+<td>访谈中的身份</td>
+<td>Inferact 联合创始人兼首席科学家，vLLM 核心维护者</td>
+</tr>
+<tr>
+<td>主题</td>
+<td>vLLM 的技术与社区演进、Inferact 的成立、开源治理、模型&#x2F;Infra&#x2F;Harness&#x2F;硬件协同设计</td>
+</tr>
+<tr>
+<td>内容依据</td>
+<td><code>/tmp/bili_vllm/episode_transcript_corrected.txt</code> 完整校正版转录</td>
+</tr>
+<tr>
+<td>时间口径</td>
+<td>转录中多次出现“今年”“去年”等相对表述，无法仅凭转录可靠换算为绝对日期；本文保留原有相对口径，能确定的年份则按嘉宾原话记录</td>
+</tr>
+<tr>
+<td>阅读提示</td>
+<td>文中“嘉宾观点”“访谈称”“主持人提到”均表示对访谈内容的归纳；“芯片公司系统工程师视角”是基于访谈的派生工程分析，不代表嘉宾原话，也不代表任何具体公司</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⚠️ <strong>风险提示：本文是对一场访谈的观点型摘要，不是事实尽调报告，也不构成投资建议。</strong> 涉及公司、融资、行业格局、技术优劣和未来预测的内容，均应理解为节目开场陈述、嘉宾个人观察或主持人与嘉宾的对话结论。尤其是相对日期、融资金额、商业进展与尚未公开的模型&#x2F;硬件计划，应以相关主体正式披露为准。</p>
+</blockquote>
+<h2 id="一句话总结"><a href="#一句话总结" class="headerlink" title="一句话总结"></a>一句话总结</h2><p>游凯超把 vLLM 的故事讲成了一条彼此咬合的链路：后摩尔定律时代，模型能否留下来越来越取决于系统和专用硬件能否高效实现它，而一个要长期承接这种复杂性的开源推理底座，又需要稳定团队、基金会治理、商业公司和全球模型及芯片生态共同支撑。</p>
+<span id="more"></span>
+
+<h2 id="嘉宾背景与访谈主线"><a href="#嘉宾背景与访谈主线" class="headerlink" title="嘉宾背景与访谈主线"></a>嘉宾背景与访谈主线</h2><p>游凯超本科和博士均毕业于清华大学，现任 Inferact 联合创始人兼首席科学家，主要工作是维护以 vLLM 为核心的开源大模型推理引擎生态。他大约从 2015 年开始认真接触编程：中学时主线仍是中高考和数学、物理学习，没有算法竞赛经历；通过几何画板、物理仿真和学堂在线接触到计算机，随后学习了学堂在线与 edX 联名的 Python 课程。主持人在访谈中提到他大一发过一百多封请教邮件、阅读过一万多页资料、三十六门课程获得 4.0；他本人淡化了“逆袭”或“卷”的叙事，更愿意把这些结果解释为对新知识的兴趣和长期坚持。</p>
+<p>他的学术起点是数据稀缺场景下的高效学习、迁移学习和大模型微调。研究重心后来转向机器学习系统，并非一次突然转弯。访谈给出的三条主要原因是：人工智能会议投稿规模增长过快，审稿质量和可预测性下降；大规模实验让他看到系统、数据和资源对算法成果的决定作用；工业界交流让他直观看到复杂硬件、多级缓存、算子实现和数据移动才是许多团队每天面对的实际难题。他从 LogME、天授、OpenMMLab 和 PyTorch 的开源贡献逐渐积累系统经验，最终在 2024 年赴伯克利 SkyLab 交流并全力投入 vLLM。</p>
+<p>伯克利在他个人路径里出现了两次。2019 年，他在 Michael Jordan 团队做暑期研修，并通过 RISELab 接触机器学习系统，也认识了后来参与发起 vLLM 的李卓翰；2024 年，他再次来到已更名为 SkyLab 的研究环境，加入已经开源并快速发展的 vLLM。Michael Jordan 偏理论与学术洞见，Ion Stoica 追求真实世界影响并持续孵化开源系统，这两类学术路径都得到他的尊重，但他明确选择了后者。</p>
+<p>访谈的后半段从个人经历转向三个更大的问题：vLLM 如何从 PagedAttention 论文原型演变成跨模型、跨硬件的推理底座；开源项目为什么需要 PyTorch 基金会与 Inferact 这样的商业实体同时存在；当通用算力增长放缓后，模型、推理系统、Agent Harness 和芯片架构怎样共同设计。三条线最后汇合到同一个判断：代码、单点算法或峰值算力本身都不足以形成长期能力，持续迭代、系统实现和组织协作才把技术转成可用的 Token。</p>
+<h2 id="13-个核心观点"><a href="#13-个核心观点" class="headerlink" title="13 个核心观点"></a>13 个核心观点</h2><ol>
+<li><strong>系统研究提供了更直接的正反馈。</strong> 嘉宾不再把论文发表当作主要目标，而是关注软件是否被真实用户采用、能否带来可复现的加速，以及社区是否持续反馈实际收益。</li>
+<li><strong>PagedAttention 是起点，不是 vLLM 的完整定义。</strong> 前者借鉴虚拟内存管理 KV Cache，后者已经发展成承接模型与硬件快速变化的完整推理引擎和生态。</li>
+<li><strong>vLLM 的主要价值是吸收复杂性。</strong> 用户只改一个模型名，背后却可能需要完全不同的注意力实现、状态管理、并行方式、量化格式与硬件适配。</li>
+<li><strong>V0 到 V1 是生产化过程中的一次显性重构。</strong> 2024 年的主线是从论文原型走向生产可用，重构必须同时保持用户兼容，并给未来模型与硬件留下扩展空间。</li>
+<li><strong>中国开源模型改变了推理生态的重心。</strong> 嘉宾把 2025 年描述为 DeepSeek R1 走红、中国模型集中开源、vLLM 中文社区从零搭建并快速扩张的一年。</li>
+<li><strong>基金会和公司承担不同职责。</strong> PyTorch 基金会提供商标、法人和持续开源的治理保障；Inferact 及其他社区参与者负责技术、资源、运营和商业化，基金会不代替工程团队写代码。</li>
+<li><strong>Coding Agent 让代码变便宜，也让维护注意力变得更稀缺。</strong> 未来用户更适合提交高质量问题和需求，掌握上下文的维护者再用 Agent 实现，而不是让维护者审阅海量低质量自动生成 PR。</li>
+<li><strong>开源基础设施需要长期、稳定、可签约的组织。</strong> 大集群资源、全职人力、NDA、法务和发布前适配都无法靠松散社团持续承担，这成为 Inferact 成立的直接现实原因。</li>
+<li><strong>商业化应与社区方向一致。</strong> 嘉宾描述的商业模式包括 Endpoint Service、BYOC 和生态合作，并希望按 Token 产出或成本节省计费，而不是按工程师工时做外包。</li>
+<li><strong>Hardware Lottery 已延伸为“系统彩票”。</strong> 一个算法即使在概念上合理，如果无法利用专用矩阵算力、编译器、Kernel 和运行时，就很难获得广泛采用。</li>
+<li><strong>MoE 同时考验小矩阵、动态路由和集群通信。</strong> 细粒度专家降低矩阵维度，Token 路由带来数据相关性，万亿参数规模又要求专家并行与数据并行协作。</li>
+<li><strong>Test Time Scaling 改变的不只是 Token 数。</strong> 从集成学习、单次长思考到 Coding Agent 多轮环境交互，系统分别扩展尝试次数、单次输出长度和交互次数，对推理引擎的要求并不相同。</li>
+<li><strong>开源模型胜出是嘉宾的关键下注，不是已发生的事实。</strong> 他的理由是模型必须被大规模使用，用户数据会逐步沉淀，模型能力难以长期隐藏；长期护城河更可能来自快速迭代。</li>
+</ol>
+<h2 id="从算法研究转向系统工程：不是转行，而是评价尺度变了"><a href="#从算法研究转向系统工程：不是转行，而是评价尺度变了" class="headerlink" title="从算法研究转向系统工程：不是转行，而是评价尺度变了"></a>从算法研究转向系统工程：不是转行，而是评价尺度变了</h2><p>嘉宾早期做的是数据稀缺场景下的高效学习，希望通过通用方法提升模型泛化能力。他后来发现，这类方法常常是在别人已完成的任务上再提高 1% 到 2% 的准确率，依赖具体任务和复现场景；等更大的预训练模型出现，仅替换底座模型带来的收益就可能超过一年的微调算法研究。这个观察没有否定顶级算法研究的价值，但让他重新判断自己能在什么资源位置上产生真实影响。</p>
+<p>学术社区的变化进一步推动了转向。他回忆，2018 年前后，会议规模较小，评审还会给出具体、有建设性的反馈；19、20 年以后，投稿增长速度超过社区成长速度，评审质量下降，是否中稿越来越像抽奖。这是强烈的个人评价，本文不把它外推为整个学术界的客观结论。对他个人而言，它意味着论文 novelty 的争论越来越难提供稳定反馈，而系统性能可以通过“加速多少倍、为什么加速、别人能否复现”更直接地检验。</p>
+<p>大规模实验是第二个转折点。他以何恺明的研究为参照，注意到好的想法之外，规模化实验、系统和数据才让工作成立。实验室在小数据集上雕琢损失函数，与真正扩展到大规模资源，是两种完全不同的能力。2022 年 VALSE 大会上，他与张祥雨交流了一个多小时，听到的重点不是目标检测的新损失函数，而是复杂硬件、多级缓存、数据移动和算子适配，这让系统问题从抽象认识变成了工业现场。</p>
+<p>这种评价尺度在他本科阶段已经有迹可循。主持人用高考过清华线两分、“大一一百多封邮件”“一万多页资料”和“三十六门 4.0”勾勒一条逆袭曲线，他却认为入学分数只是 admission，进入大学后应当忘掉它。给老师发邮件也不是为了积累一个漂亮数字，而是十多门课里每周持续提问的自然结果。2019 年年底左右获得清华特等奖学金给他带来认可和更大的朋友圈，但他也反对把奖项解释成统一评出的“最厉害十个人”，并认为学校后来降低媒体曝光更有利于学生正常成长。学习与评价之间的区别，后来延伸成了他对论文指标和真实系统影响的取舍。</p>
+<p>这条路径也解释了他为何重视第一性原理。学习 GPU Kernel 时，他先理解编程模型和设计空间，再推断驱动层应当存在定位非法内存访问的工具，持续向英伟达团队询问后找到了 CUDA coredump，并把方法推广到社区。访谈想表达的不是“知道一个冷门命令”就等于系统能力，而是先理解硬件和软件边界，再寻找符合边界的调试手段；如果只在现有代码上修补并反复跑分，性能变化很容易沦为运气。</p>
+<h2 id="伯克利的系统传统：研究项目要经受真实用户检验"><a href="#伯克利的系统传统：研究项目要经受真实用户检验" class="headerlink" title="伯克利的系统传统：研究项目要经受真实用户检验"></a>伯克利的系统传统：研究项目要经受真实用户检验</h2><p>嘉宾把 vLLM 放进了伯克利更长的开源系统谱系：BSD、RISC-V、RAID，以及后来的 Spark、Ray，都被他列为来自伯克利的代表性成果。这些项目常由学生研究发起，随后经历论文、原型、社区维护和工业基础设施几个阶段。vLLM 对他有吸引力，不只因为推理是大模型训练之后的必经环节，也因为它看起来符合这种“研究与工业需求共振”的历史模式。</p>
+<p>他转述 David Patterson 关于研究中心周期的观点：一个实验室或大型研究中心做五年，正好覆盖一批博士生的培养周期；AMPLab、RISELab、SkyLab 也被他放在这条演进线上。这里的“五年”是访谈转述的研究组织理念，不是本文对所有实验室的管理建议。它强调的是边界清楚、时间有限的集体投入，优秀学生在一个周期里围绕工业需求集中攻坚，项目毕业后再由社区或公司接续。</p>
+<p>2019 年暑研期间，他同时接触 Michael Jordan 与 Ion Stoica。前者关注机器学习理论、博弈论和经济学等洞见，后者更强调 real-world impact。嘉宾曾担心自己没有名气，做出来的软件无人使用，Ion Stoica 给出的回答成为长期影响他的判断。四年后 Ion Stoica 再访清华时，他主动提起当年的问题和自己几年的实践，再申请赴伯克利交流。</p>
+<p>两次伯克利经历之间，他并非一直等待某个“大项目”。2020 年疫情期间，他与本科同学翁家翌开发开源强化学习系统天授，用于 Atari 等游戏智能体；2022 年又把算法贡献给 OpenMMLab 与 PyTorch 生态。LogME 则出现在他已经思考转向的 2021 年前后，他重视它相对其他方法有几十倍性能提升的可验证性。2022 年底 ChatGPT 发布，他看到翁家翌进入 OpenAI 并参与训练工作，又比较了大模型研究的几条路径：数据和算法强依赖公司资源，机器学习系统却可以从实验室的小规模研究扩展到更大部署。这些小项目、社区贡献和同行反馈，为 2024 年直接接手大量 vLLM 工程工作准备了经验。</p>
+<p>这一传统也改变了论文在系统项目中的位置。vLLM 的原型需要接受系统论文的 Artifact Evaluation，实验数字需要能够复现，开源不是论文之后附带的宣传动作。嘉宾认为，系统先被真实用户采用，论文可以成为总结工程价值的副产物；此时审稿人甚至可能已经是软件用户，讨论会围绕可用性、性能和设计取舍展开。</p>
+<h2 id="PagedAttention-到-vLLM：从一个内存管理想法到推理生态"><a href="#PagedAttention-到-vLLM：从一个内存管理想法到推理生态" class="headerlink" title="PagedAttention 到 vLLM：从一个内存管理想法到推理生态"></a>PagedAttention 到 vLLM：从一个内存管理想法到推理生态</h2><p>访谈反复区分 PagedAttention 与 vLLM。PagedAttention 借鉴操作系统虚拟内存管理机制，管理自回归生成过程中产生的 KV Cache。每个请求的序列长度会变化，状态持续增长，推理引擎需要更灵活地管理这些中间状态。嘉宾直言，从学术创新角度看，这个想法并不复杂，SOSP 2023 的评审也批评其过于直接；论文能够被接受，在他的叙述中主要因为团队做得早并完成了充分实验。</p>
+<p>vLLM 则从论文原型继续生长。Continuous Batching 与 PagedAttention 是早期核心能力，但项目后来要处理的已远不止一个缓存算法：如何调度请求、支持不同模型结构、运行在不同芯片和集群上、承接新量化格式与推理解码方法，并对上层暴露尽量统一的接口。把 vLLM 继续等同于 PagedAttention，会忽略它在模型和硬件耦合加深之后承担的工程边界。</p>
+<p>这种边界的价值在模型切换时最清楚。用户可能只在下拉菜单或请求参数里把模型从 DeepSeek 换成千问，推理引擎背后却要面对不同注意力状态、Kernel、并行策略和硬件效率。嘉宾说 vLLM 已支持两三百种模型结构，同时也开始删除不再使用的结构与低价值功能。支持范围不是单向增加，删掉过时复杂性与增加新能力同样属于维护。</p>
+<p>访谈还提供了一个优先级案例：嘉宾主导删除 Beam Search，因为大模型侧的主流工作负载已经不再适合继续为它承担适配复杂度，尽管推荐系统用户仍会抱怨。类似地，几百兆的小模型可以运行，但其专项性能优化不在当前高优先级。vLLM 选择把主要资源放在大集群、大模型、主流硬件和主流工作负载上，这种取舍来自维护容量，不代表被降级场景没有价值。</p>
+<p>项目早期的人也解释了它为何能越过论文原型阶段。PagedAttention 论文的主要作者是李卓翰和 Woosuk Kwon，两人承担了最初维护；Simon 随后全职投入，他此前参与过 Anyscale 创业，不把论文看作唯一目标，并逐渐承担社区管理；游凯超把自己视为第四位主要投入者。其他论文作者因低年级博士需要开启自己的研究、临近毕业者需要找工作等原因转向别处，留下来的几个人恰好处在有毕业成果、愿意积累 hands-on experience、又相信项目历史机会的阶段。vLLM 的连续性不是论文作者名单自然保证的，而是少数人愿意在缺资源时长期做工程维护。</p>
+<h2 id="V0-到-V1，以及中国模型生态带来的第二次压力测试"><a href="#V0-到-V1，以及中国模型生态带来的第二次压力测试" class="headerlink" title="V0 到 V1，以及中国模型生态带来的第二次压力测试"></a>V0 到 V1，以及中国模型生态带来的第二次压力测试</h2><p>2024 年的主旋律被嘉宾概括为“重构”。2023 年开源的系统仍带有论文原型特征，需要吸收业内其他推理引擎的设计经验，走向生产级可用。年底提出的 V0 到 V1 重构，是一次显眼的版本变化，但嘉宾更强调 vLLM 实际上一直处于重构中：模型与硬件持续变化，系统内部必须重写，外部又要尽量保持兼容。</p>
+<p>在他的发电类比里，模型像发电机，硬件像风、水、太阳能等自然资源，推理引擎像电力系统。用户仍然从插座取电，却不需要知道后端从火电切换到新能源经历了什么。V0 到 V1 的难点也在这里：重写执行机制不能把模型和硬件的复杂性泄漏给所有终端用户，还要为随后出现的模型结构留下空间。</p>
+<p>2025 年带来了另一种压力。嘉宾 2024 年 12 月结束交流，恰逢 DeepSeek V3 发布，随后 R1 在 2025 年初发布并走红。他将这一年描述为中国开源模型爆发的一年，特别提到 7 月前后多家公司在 WAIC 前集中发布。vLLM 原本以英文 Slack 和欧美模型为中心，他回国后搭建公众号、小红书、知乎等中文沟通渠道，并走访 DeepSeek、Kimi 等已公开使用 vLLM 的团队，连接国内模型方与维护者。</p>
+<p>DeepSeek 并非 R1 走红后才与 vLLM 接触。按嘉宾说法，其内部很早就使用 vLLM 及自有优化变种，从 DeepSeek MoE 到 V2、V3 一直保持沟通。真正带来冲击的是 DeepSeek 团队在 vLLM 基础上把内部推理优化推进得更远，社区维护者需要反过来学习。这段叙述也提醒读者，“被某开源引擎支持”与“内部完全使用原版引擎”不是一回事。</p>
+<p>嘉宾对中外模型的概括是：欧美更重效果，中国更重效率，他把差异与算力供给联系起来。这只是其合作经验中的总体感受，不能替代逐模型、逐工作负载比较。对通用推理框架而言，两种路线都增加了复杂性：前者可能引入更激进的结构，后者可能要求更深的 Kernel、量化、通信和全栈协同。</p>
+<h2 id="PyTorch-基金会、社区与商业公司如何共存"><a href="#PyTorch-基金会、社区与商业公司如何共存" class="headerlink" title="PyTorch 基金会、社区与商业公司如何共存"></a>PyTorch 基金会、社区与商业公司如何共存</h2><p>vLLM 在公司成立前先捐给 PyTorch 基金会。背景是核心团队已经看到长期维护风险，却尚未确定是否亲自创业。基金会作为独立法人，可以持有商标、接受捐赠、提供法律与活动支持，并从制度上保证项目继续开源；学校实验室按学生周期变化，难以长期承担同一法律实体和商标治理。</p>
+<p>基金会不负责具体技术路线。访谈中，vLLM 与 PyTorch 都被描述为基金会旗下的顶级项目，但 PyTorch 仍由 Meta 主导大量开发，vLLM 的代码和日常技术管理也仍由自己的维护者及参与公司完成。Inferact 成立后，团队大约按季度向基金会汇报项目进展，技术设计、模型支持和发布节奏并不由基金会代替决策。</p>
+<p>社区治理采用分级方式。嘉宾把最终能拍板的一组人称为“仁慈的独裁者”，其中包括 Simon、Woosuk、游凯超、李卓翰以及 Red Hat 的部分同学；下层还有十来位核心维护者、几十位 committer 和更广泛的贡献者。日常沟通可以开放讨论，但方向冲突、功能取舍和资源优先级最终必须有人负责。</p>
+<p>公司也不是 vLLM 的排他性所有者。NVIDIA、AMD、Red Hat、云厂商等都可以参与维护和商业化，商标属于基金会所代表的社区。Inferact 的优势来自核心团队、历史上下文和持续投入，而不是把名称或代码变成私有资产。嘉宾认为，这种结构既保留项目中立性，也让一家公司能够为长期路线提供全职人力和战略决策。</p>
+<p>当商业客户与社区方向冲突时，嘉宾给出的回答是“不接这样的商业客户”。他解释，公司当前能承接的客户少于合作需求，因此可以优先选择与社区演进一致的项目。这个答案建立在访谈所述的当前供需状态上，不能自动推导为公司未来任何阶段都不会遇到利益冲突；基金会、商标和开放治理提供的是结构性约束，具体决策仍需持续观察。</p>
+<h2 id="Coding-Agent-之后，开源维护从“收代码”转向“收信号”"><a href="#Coding-Agent-之后，开源维护从“收代码”转向“收信号”" class="headerlink" title="Coding Agent 之后，开源维护从“收代码”转向“收信号”"></a>Coding Agent 之后，开源维护从“收代码”转向“收信号”</h2><p>访谈称，vLLM 已有两千多名贡献者；GitHub 在 2025 年按贡献者活跃度统计时，vLLM 是整个平台最活跃的项目。高活跃度带来影响力，也带来维护成本。嘉宾举例说，有培训机构通过提交无用 PR 包装学员简历，还有账号十分钟提交二十个 PR，内容完全由 Coding Agent 生成，他把这类内容称为 AI Slop。</p>
+<p>这类行为破坏了维护者对参与者善意的默认假设。团队开始引入认证和过滤机制，更看重知名机构、长期贡献者与可验证的问题反馈，对明显机器人账号则忽略或拉黑。这里不是说个人贡献者天然不可信，而是代码生成成本骤降之后，“有一个 PR”不再能证明提交者理解问题、测试过行为或愿意承担后续维护。</p>
+<p>嘉宾预测，用户与维护者的分工会变化：用户提供 bug report、feature request、真实工作负载和复现信息；掌握路线与历史上下文的维护者用 Agent 完成实现。因为审阅陌生人生成的代码需要恢复上下文、判断设计边界和承担回归风险，维护者自己让 Agent 重写，反而可能更快。</p>
+<p>他没有接受完全 AI 自治的治理方向。OpenClaw 被他描述为 AI 提交、AI 审核、AI 合并的社区，而 vLLM 需要为未来三个月的模型、未来半年或一年的硬件预留设计，这些任务依赖尚未写进 issue 的合作信息和长期判断。AI 可以完成大部分实现，人仍要做顶层设计、优先级和对未来需求的预判。</p>
+<p>这也解释了为什么创始团队仍然重要。代码生产自动化没有减少路线责任，只把稀缺资源进一步推向判断、上下文和信任。对新个人贡献者而言，更有价值的入口可能是高质量复现、性能数据、硬件环境说明和长期模块维护，而不是一次性的机械 PR。</p>
+<h2 id="核心团队如何走到一起：共同点不是履历，而是对项目失败的恐惧"><a href="#核心团队如何走到一起：共同点不是履历，而是对项目失败的恐惧" class="headerlink" title="核心团队如何走到一起：共同点不是履历，而是对项目失败的恐惧"></a>核心团队如何走到一起：共同点不是履历，而是对项目失败的恐惧</h2><p>嘉宾把开源项目中的人员流动与博士培养周期联系起来。低年级博士往往需要自己发起研究项目和发表论文，临近毕业者又忙于找工作，最适合承担长期维护的人，通常处在博士中后期、已有成果可以毕业、愿意花几个月做纯工程的阶段。游凯超加入时正好符合这些条件：早期算法研究已经足以支持毕业，又希望获得构建系统的 hands-on experience，因此不会要求每项工程都立刻变成论文。</p>
+<p>留下来的人也有相似的价值排序。嘉宾说，有人追求金钱，有人追求权力，自己追求的是意义；在计算机行业，只要有基本生活保障、电脑和网络，就有条件投入精神追求。他引用《送东阳马生序》中的“以中有足乐者不知口体之奉不若人也”，解释维护者在资源有限时仍能一起工作数年。访谈没有把离开者描述成背叛者，每个人都有毕业、就业和个人机会等客观选择，开源热情无法强求。</p>
+<p>四位主要角色的经历并不相同。李卓翰与 Woosuk 是 PagedAttention 论文的主要作者；Simon 有 Anyscale 创业和 Character AI 工作经历，更早展现社区沟通与管理能力，后来担任 CEO；游凯超同时有算法与系统背景，承担技术、国内社区和合作连接；Woosuk 延续大量历史技术设计，后来担任 CTO。李卓翰 2024 年较早毕业，先后进入 OpenAI 与 Meta 的相关团队，已承担自己的工作，因此没有加入这次创业，双方主要保持高层技术沟通。</p>
+<p>真正让团队形成创业共识的，不是外部机会不够好。访谈提到 xAI、Thinking Machines Lab、Google DeepMind 等去向，也提到注册公司前某大厂的高薪邀约。团队劝 Woosuk 时没有比较短期薪酬，而是追问十年后 vLLM 若失败，个人赚到很多钱是否仍会开心。这个问题同样适用于几位核心成员，他们给出的回答一致。公司成立后，四位创始人仍按历史上下文分工，谁原来负责某个方向、对某合作方了解最多，谁就继续推进；重大事项再共同同步，而不是重新按职级切割全部责任。</p>
+<p>从社团式社区变成公司后，最明显的变化是计划能力。过去参与者都有本职工作，维护者只能以 best effort 的方式请求大家本周完成某项任务，临时缺席也很正常；全职团队建立后，可以按季度设目标，再拆到小组和每周执行。创始人之间从松散同学关系变成每天同步公司问题，沟通更紧密。团队在新加坡和美国有两个 base，许多协作依靠文字和在线会议，但嘉宾说他们较少共同撰写很长的管理文档，更多直接在 Slack 沟通。社区层面的几位决策者约每周碰一次，committer 则主要在频道中异步交流。这套方式并未消除开源社区的自愿参与，而是在公司内部增加一条能稳定交付关键功能的全职执行线。</p>
+<h2 id="Inferact-为什么成立，以及它准备怎样赚钱"><a href="#Inferact-为什么成立，以及它准备怎样赚钱" class="headerlink" title="Inferact 为什么成立，以及它准备怎样赚钱"></a>Inferact 为什么成立，以及它准备怎样赚钱</h2><p>Ion Stoica 很早就坚持 vLLM 需要一家公司支撑，并用 Linux&#x2F;Red Hat、Kubernetes&#x2F;Google、PyTorch&#x2F;Meta、Spark&#x2F;Databricks 等关系作类比。核心团队认同“需要公司”，真正犹豫的是“是否由自己成立”。创业意味着融资、招聘、法务和商业化，这些都超出学生维护者熟悉的技术舒适区。</p>
+<p>到 2025 年，大规模模型部署让问题变得无法回避。松散社区无法保证某位贡献者连续数月完成关键功能；新模型、新硬件发布前的合作常有保密要求，但开源社区不是可签 NDA 的实体；单机资源也不足以验证集群级优化，临时借来的机器可能随时被收回。嘉宾形容那一年为了集群资源四处“乞讨”，项目继续发展已需要稳定人力、法务主体和可支配硬件。</p>
+<p>团队内部的情感选择同样关键。游凯超较早决定创业，先接 SkyLab 博士后职位等待其他人毕业；Simon 也较早确定方向。Woosuk 面前有多种高回报机会，团队最终问他：如果赚到很多钱，但十年后 vLLM 失败，会不会开心。访谈称，答案让几位核心成员最终聚到一起。节目也提到某顶级大厂在公司注册前给四位创始人每人开出年薪两千万美元的条件；这是受访者陈述，本文无法独立核验。</p>
+<p>资金端反而相对顺利。访谈称，a16z 在 2023 年向开源项目提供过几十万美元级资助，Sequoia 与真格在 2024 年也有捐赠。节目开场称 Inferact 在“今年初”获得 1.5 亿美元种子轮融资；由于转录不能确定“今年”的绝对年份，本文不把它改写成某年事件，也不把金额扩大十倍。嘉宾称公司目前三十多人、接近四十人，仍在招聘。</p>
+<p>商业模式围绕推理价值而不是工程工时展开。Endpoint Service 是公司提供机器和软件，客户直接使用 Token；BYOC 是客户提供机器，公司提供软件；另有与战略客户共同建设生态的合作。嘉宾希望最终按量收费，以多产生多少 Token、节省多少机器成本衡量价值。公司名称 Inferact 也来自 Inference 与“Bring inference into action”的组合。</p>
+<h2 id="Co-design：模型、Infra、Harness-与硬件必须围绕同一负载"><a href="#Co-design：模型、Infra、Harness-与硬件必须围绕同一负载" class="headerlink" title="Co-design：模型、Infra、Harness 与硬件必须围绕同一负载"></a>Co-design：模型、Infra、Harness 与硬件必须围绕同一负载</h2><p>嘉宾用发电解释协同设计：硬件是水力、风力、光伏等自然资源，模型是发电机，推理引擎是电力系统，Token 是送到用户手中的产物。相同资源条件下，发电机是否匹配当地水文或风力决定效率；同样，模型结构是否匹配芯片的专用计算单元，推理引擎能否高效调度，决定最终 Token 产能。</p>
+<p>Hardware Lottery 描述的是算法能否抽中硬件的“彩票”。摩尔定律有效时，软件可以等待通用性能自然增长；在嘉宾描述的后摩尔定律时代，性能增量更多来自专用化。如果算法不能映射到专用矩阵算力，就无法获得硬件红利。Capsule Network 被他用作概念合理却不适配 GPU 的例子，Transformer 则因为大量矩阵乘法和良好并行性抽中了 GPU 的彩票。</p>
+<p>系统彩票是同一问题的扩展。FlashAttention 表明精确的 Softmax Attention 可以被高效实现，改变了长上下文算法研究的选择；PagedAttention 加 Continuous Batching 降低了自回归解码的服务成本；投机解码把逐 Token 生成变成小段验证；分块并行又影响线性注意力能否落地。模型不是只和芯片指令集配合，还要和 Kernel、编译器、运行时、调度与状态管理共同配合。</p>
+<p>RoPE 是访谈中的模型&#x2F;Infra 协同案例。许多位置编码需要修改注意力内部实现，而 FlashAttention 成为长序列训练的重要 Kernel 后，大部分用户没有能力为每种位置编码重写它。RoPE 可以独立注入 Query 和 Key，不必侵入注意力 Kernel，因而更容易与高性能实现组合。嘉宾借此说明，模型结构中的接口位置会直接影响其工程传播。</p>
+<p>组织上，算法团队与 Infra 团队也需要协同。算法研究者更关心表达能力和下游指标，Infra 工程师更关心硬件、数据流和极致利用率。两边坐在一起、共享日常讨论，或者招聘同时理解两侧的人，都能减少设计误差。嘉宾也提醒，Infra 过强会反向伤害算法，例如为追求 MoE 负载均衡采用算法上不能接受的 expert choice；协同不是由任一侧单向服从。</p>
+<h2 id="MoE-的三道系统关卡"><a href="#MoE-的三道系统关卡" class="headerlink" title="MoE 的三道系统关卡"></a>MoE 的三道系统关卡</h2><p>MoE 的第一道挑战是细粒度专家。DeepSeek MoE 推动专家粒度变细，但专家越小，矩阵乘法维度也越小，硬件擅长的大矩阵计算更难充分利用。模型可能获得更灵活的专家组合，系统侧却要处理更多小矩阵、更多调度碎片和更低的单次计算密度，算法收益与实现效率需要一起评估。</p>
+<p>第二道挑战是动态路由。每个 Token 选择哪些专家取决于数据，执行图不能完全静态确定。GPU 更容易处理提前知道数据流向的规则计算，动态选择会引入分组、重排、负载不均与额外调度。嘉宾把这归为 GPU 高效实现不擅长处理的数据依赖，而不是把问题简化成某一个 GEMM 是否够快。</p>
+<p>第三道挑战是专家并行。细粒度专家推动模型扩展到万亿参数级，但每次只激活几十分之一，系统必须把专家并行和数据并行结合起来。此时通信、计算和路由成为一条链，局部 Kernel 很快并不保证集群吞吐高。DeepEP 被访谈归为专家并行通信方案，DeepGEMM 则处理专家计算和选择，嘉宾据此认为 DeepSeek 在 2025 年的 MoE 系统方案中引领了方向。</p>
+<p>MoE 之后，注意力结构仍未收敛。线性注意力与稀疏注意力可能是竞争路线，也可能共同存在。对推理框架来说，完整注意力的状态较小、只增长不修改，适合 PagedAttention；线性注意力的单 Token 状态更大且会修改，需要另一套状态管理；混合交叉注意力更复杂。未来架构之争同时也是 KV 状态语义和运行时接口之争。</p>
+<p>DeepSeek 被嘉宾排在模型&#x2F;Infra Co-design 的前列，还有一个组织原因：算法同学也亲自做系统实现。访谈提到，2024 年初探索较粗粒度 MoE 时，一位算法同学写出了高效实现，后续细粒度 MoE 也由团队率先在推理系统中推进。算法研究者因此能够知道哪些结构会产生小矩阵、路由和通信问题，Infra 团队也能更早看到模型侧真正要探索的空间。反例是纯 Infra 视角为追求负载均衡采用 expert choice，系统可能跑得更快，算法上却不能接受。MoE 的三道关卡最终需要共同指标，而不是让吞吐或模型质量中的任一个指标单独拍板。</p>
+<h2 id="投机解码：DSpark、DFlash-与“猜多少、验多少”"><a href="#投机解码：DSpark、DFlash-与“猜多少、验多少”" class="headerlink" title="投机解码：DSpark、DFlash 与“猜多少、验多少”"></a>投机解码：DSpark、DFlash 与“猜多少、验多少”</h2><p>自回归推理由预填充和解码两阶段组成。预填充处理用户输入，解码处理模型输出；后者逐 Token 生成，串行性强。投机解码先猜接下来的一段 Token，再由主模型批量验证，把一部分逐 Token 解码转换成短段预填充式计算，以提高处理效率。</p>
+<p>在嘉宾的分类里，EAGLE 和 DeepSeek 的 MTP 通常猜三到五个 Token，猜得短但接受率较高；DFlash 路线一次可猜十六个，长度更大但错误更多，验证错误候选会浪费算力。vLLM 与 NVIDIA 的相关技术博客声称，对某些模型的 DFlash 支持可达到每秒上千 Token。这个速度只对应访谈所述的特定模型与实现，不能外推到所有模型和负载。</p>
+<p>DSpark 的改进重点是估计候选可靠性。若猜了十六个 Token，而置信度显示可能只有前八个可靠，就只验证前八个，减少明显无效的验证。嘉宾认为这条路线并非突然出现，腾讯混元的 D-Cut、上交团队的 domino 也在处理类似问题，因此算法 novelty 有限；真正重要的是 DeepSeek 用扎实的 Infra 把想法做到可用并持续压榨性能。</p>
+<p>这组技术再次展示 Co-design：草稿模型、接受率估计、验证 Kernel、批处理和调度必须一起设计。只比较“平均接受几个 Token”会漏掉验证成本、被拒绝计算、批次干扰和模型结构差异。推理引擎对算法的实现质量，直接决定投机解码能否从论文结果变成大规模服务能力。</p>
+<p>访谈末尾还有一个与投机解码有关的冷知识。嘉宾说，很多模型在输入一千个感叹号后会输出大量感叹号，这种特殊输出有时可以用来探测服务背后的推理引擎开了几步投机采样。他同时声明这并非对所有模型都绝对成立。这个例子不应被当作标准测试方法，却很形象地说明推理优化可能从输出行为泄露实现特征：算法、服务策略与最终 Token 并非完全隔离，验证投机解码还要关注行为一致性，而不只是速度。</p>
+<h2 id="Test-Time-Scaling-与-Prefix-Caching：Agent-负载改变了扩展对象"><a href="#Test-Time-Scaling-与-Prefix-Caching：Agent-负载改变了扩展对象" class="headerlink" title="Test Time Scaling 与 Prefix Caching：Agent 负载改变了扩展对象"></a>Test Time Scaling 与 Prefix Caching：Agent 负载改变了扩展对象</h2><p>嘉宾把 Test Time Scaling 放进更长的历史中。早期集成学习让不同模型或同一模型多次回答，再聚合结果，扩展的是尝试次数；OpenAI o1 式长思考让一次请求输出更多 Token，扩展的是单次推理长度；Coding Agent 持续与环境交互，扩展的是交互次数和任务运行时间。三种方法都增加测试时计算，却产生不同系统负载。</p>
+<p>一次请求输出几十万 Token，会长时间占用系统资源，更适合少量高难度任务。Agent 每轮可能只思考几百 Token，却会反复读取环境、调用工具和发起新请求，更容易进入日常工作流。对后者而言，保持历史前缀稳定、复用已有计算，比单次极长解码更重要，Prefix Caching 因此成为关键能力。</p>
+<p>Harness 的设计会直接决定缓存命中。若每轮都在请求最前面动态调整工具列表，即便本意是减少工具范围，也会改变前缀并让已有计算失效。把当前日期放进 System Prompt，会在日期变化时让缓存统一失效；把精确到秒的时间放在请求前部则更极端，几乎每次请求都不同。更合理的做法是把日期或时间作为按需工具，让模型需要时查询。</p>
+<p>流量调度同样属于 Harness&#x2F;Infra 协同。访谈提到，一些框架把定时任务全部设在整点，导致大量 Agent 同时请求推理服务。Moonshot 团队把它形容为“一群小龙虾一到整点就集体出动攻打月球”。如果业务不要求严格整点，可以在小时内随机分散任务，减少瞬时压力。</p>
+<p>模型自身也可能破坏前缀稳定性。有些模型在下一轮思考时删除上一轮思考过程，系统便无法直接复用完整历史状态，需要模型、Harness 与推理引擎共同优化。访谈判断当前基础支持已经较好，主要问题是 Harness 碎片化、模型状态语义不同，因而很难用一个通用策略覆盖所有组合。</p>
+<h2 id="Token-像电，但它带着模型烙印"><a href="#Token-像电，但它带着模型烙印" class="headerlink" title="Token 像电，但它带着模型烙印"></a>Token 像电，但它带着模型烙印</h2><p>电力类比解释了供给链，却在产物层面失效。电可以调制电压和频率，用户侧围绕统一标准接入；DeepSeek 的 Token 不能转换成 Kimi 的 Token，不同模型生成的内容带有各自能力、训练数据、行为方式和 Harness 适配特征。相同 Token 数不代表相同任务价值。</p>
+<p>嘉宾把现实描述为上百种发电机输出不同电压与频率，却没有统一转换器。某些模型更适合规划，某些更适合执行；有的适合 Claude Code，有的适合 OpenClaw。推理系统既要提升产量，也要支持不同“品质”的 Token，应用层还要理解模型特性。Token 因而暂时不是完全同质的 Commodity。</p>
+<p>这也解释了效率与 Scaling Law 为什么不冲突。推理需求增长并不能成为停止优化的理由，有限算力和电力反而让每单位资源的 Token 产出更重要。供给侧提高推理效率，需求侧改进 Harness、节省无效 Token、选择更便宜模型完成适合的任务，两侧共同调整才可能形成供需平衡。</p>
+<p>嘉宾认为中国模型在美国走向闭源后“扛起了开源大旗”，并把自己对开源模型的支持与国家立场区分开：他下注的是开源模型，哪个国家的模型开源就支持哪个。他认为模型必须被用户大规模使用，用户长期积累的数据会降低复制能力的门槛，尤其是 Coding Agent 数据，一个公司级机构大约一个月就可能收集到足以启动训练飞轮的数据。这个时间判断是嘉宾估计，缺少任务、数据质量和训练目标等限定，不能当作通用工程周期。</p>
+<p>在这一推演里，模型能力优势难以长期守住，快速迭代才是阶段性护城河，模型最终可能商品化。vLLM 与 Inferact 选择聚焦推理，假设模型层会有持续供给，而通用、可在不同云和硬件条件下部署的推理底座仍有独立价值。这是公司战略逻辑与嘉宾未来判断的结合，结果仍取决于开源模型、硬件和服务市场的实际演进。</p>
+<h2 id="FP8、芯片架构与第一性原理"><a href="#FP8、芯片架构与第一性原理" class="headerlink" title="FP8、芯片架构与第一性原理"></a>FP8、芯片架构与第一性原理</h2><p>嘉宾转述 David Patterson 的两点判断：通用性能增长受限后，需要面向领域特定负载设计芯片；矩阵乘法虽然简单，却足够普遍和有效，值得芯片长期特化。因此，现代高性能 AI 芯片将大量能力放在矩阵计算上，模型结构若偏离这种计算形态，性能会明显受损。模型往芯片靠，是因为芯片一旦完成设计，修改周期和代价都更大。</p>
+<p>FP8 是访谈给出的具体例子。2024 到 2025 年间，嘉宾把英伟达旗舰从 A100 到 H100、架构从 Ampere 到 Hopper 的变化，与 FP8 能力联系起来，并称 FP8 运算相对 16 位浮点可快两倍。这个“两倍”是访谈中的硬件能力概括，不等于任何完整模型端到端必然提速两倍。</p>
+<p>全局 FP8 量化容易损失精度。嘉宾认为 DeepSeek 是较早大规模跑通 FP8 训练的团队，其方案对权重做分块量化，对激活做逐 Channel 量化，并与下一代 MX 量化格式方向一致。矩阵乘法累加仍有精度关卡，DeepSeek 又采用矩阵计算后由向量单元累加的思路，利用两类计算单元可同时执行，在访谈叙述中实现了精度与效率兼顾。</p>
+<p>这段技术史说明量化格式不是一个孤立的数字宽度选择。分块尺度、逐通道元数据、矩阵单元支持、向量累加、Kernel 排程和模型精度必须形成闭环。DeepSeek 能做深度全栈优化，也与其自建机房、能够控制集群到上层软件有关；代价是资源不如云上租赁容易快速扩充。访谈没有给出两种路线的统一最优答案。</p>
+<p>第一性原理在这里表现为：先理解计算和数据移动的约束，再评估新结构，而不是追逐每月出现的技术名词。做性能测试还要考虑散热、功率和硬件频率；设计 Attention 不能只看公式，还要知道不同 Batch 下如何计算、FlashAttention 如何实现。可靠团队需要足够多的人能从负载、硬件和软件边界出发判断投入方向。</p>
+<h2 id="未来判断：百万上下文、开放模型与-Token-供需"><a href="#未来判断：百万上下文、开放模型与-Token-供需" class="headerlink" title="未来判断：百万上下文、开放模型与 Token 供需"></a>未来判断：百万上下文、开放模型与 Token 供需</h2><p>嘉宾只给出一个明确的 hot take：与人交互的模型，上下文需求可能停留在百万级；生物、化学等特殊自然科学任务可能需要千万乃至亿级上下文。长程任务和终身学习可以通过外部记忆、技能、工具与 subagent 支撑。如果这个预测成立，当前模型结构和 Infra 范式还能延续较长时间。它被本人明确标记为待几年后检验的预测。</p>
+<p>对中美 AI 基础设施，他避免简单使用“竞争”叙事。按其观察，中国高端算力紧缺，因此更重视国产卡适配和效率，土地与电力条件相对充足；美国高端芯片更多，但土地与电力供应承压，下一轮基础建设要补电力。本文只保留其观点归因，不把这些宏观判断当作经过独立数据验证的结论。</p>
+<p>更长期的下注是开源模型胜出、模型趋于 Commodity、Token 供需最终平衡。嘉宾的逻辑建立在模型必须服务用户、用户数据可以反哺训练、供需两侧都会主动优化。与此同时，他又强调 Token 带着模型烙印，这意味着“模型商品化”更可能指获取和部署门槛下降，不等于所有模型输出完全同质。</p>
+<p>他对“系统比算法更决定上限”的认同也有明确边界。这个说法由 David Patterson 提出，不是游凯超自己的原创判断；他用 FlashAttention、PagedAttention 加 Continuous Batching、投机解码和线性注意力的分块算法说明，系统实现会改变某类算法是否可行。再往后，万亿参数是否要到十万亿、百万上下文是否足够、AGI 与人类社会怎样演进，已不只是工程预测。嘉宾把它称为历史问题，并没有给出确定路线图。</p>
+<p>他理想中的人机分工也较克制：硅基智能从大量语料中归纳，提供更大规模的执行能力；人类掌握更多当下 Context，并提供洞见和灵感。对于年轻 AI 研究者，他没有给出具体岗位捷径，只说行业竞争激烈、心态容易浮躁，应先从第一性原理想清楚自己要解决的问题和个人追求，再做长期积累。写作在这里也是一种验证手段，把想法清楚写下来，才能检查形式化表达是否成立。</p>
+<h2 id="关键数据与时间线"><a href="#关键数据与时间线" class="headerlink" title="关键数据与时间线"></a>关键数据与时间线</h2><p>下表只收录转录中明确出现的数字；“约”“大概”“接近”等不确定性按原口径保留。</p>
+<table>
+<thead>
+<tr>
+<th>时间&#x2F;数量</th>
+<th>转录中的事件或说法</th>
+<th>口径说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2013 年</td>
+<td>清华推出学堂在线</td>
+<td>嘉宾回忆</td>
+</tr>
+<tr>
+<td>约 2015 年</td>
+<td>开始接触编程，随后学习 Python</td>
+<td>嘉宾自述</td>
+</tr>
+<tr>
+<td>2018 年前后</td>
+<td>开始接触人工智能研究</td>
+<td>嘉宾自述</td>
+</tr>
+<tr>
+<td>2019 年暑假</td>
+<td>在伯克利 Michael Jordan 团队暑研，接触 RISELab 与李卓翰</td>
+<td>嘉宾自述</td>
+</tr>
+<tr>
+<td>2019 年年底左右</td>
+<td>获清华特等奖学金</td>
+<td>嘉宾使用“左右”</td>
+</tr>
+<tr>
+<td>2020 年</td>
+<td>开始读博士；与翁家翌做开源强化学习系统天授</td>
+<td>嘉宾自述</td>
+</tr>
+<tr>
+<td>2022 年</td>
+<td>VALSE 与张祥雨长谈；向 OpenMMLab、PyTorch 等社区贡献</td>
+<td>嘉宾自述</td>
+</tr>
+<tr>
+<td>约 2022 年底</td>
+<td>vLLM 相关工作可能开始</td>
+<td>嘉宾使用“大概”“应该”</td>
+</tr>
+<tr>
+<td>约 2023 年 6 月</td>
+<td>vLLM 开源</td>
+<td>嘉宾使用“年中”“大概 6 月左右”</td>
+</tr>
+<tr>
+<td>2024 年</td>
+<td>在 SkyLab 交流并全职投入 vLLM；开源重心仍主要在欧美模型</td>
+<td>嘉宾自述</td>
+</tr>
+<tr>
+<td>2024 年底</td>
+<td>提出 V0 到 V1 重构计划；结束交流时遇到 DeepSeek V3 发布</td>
+<td>嘉宾自述</td>
+</tr>
+<tr>
+<td>2025 年初</td>
+<td>DeepSeek R1 发布并在春节前后走红</td>
+<td>嘉宾自述</td>
+</tr>
+<tr>
+<td>2025 年</td>
+<td>搭建 vLLM 中文社区；大模型集群部署、人力、NDA 与资源问题推动公司化</td>
+<td>嘉宾自述</td>
+</tr>
+<tr>
+<td>“今年初”</td>
+<td>Inferact 获 1.5 亿美元种子轮融资</td>
+<td>节目开场陈述；绝对年份不从转录推断</td>
+</tr>
+</tbody></table>
+<h2 id="关键规模、性能与组织数字"><a href="#关键规模、性能与组织数字" class="headerlink" title="关键规模、性能与组织数字"></a>关键规模、性能与组织数字</h2><table>
+<thead>
+<tr>
+<th>指标</th>
+<th align="right">访谈中的值</th>
+<th>限定</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>vLLM 支持的模型结构</td>
+<td align="right">两三百种</td>
+<td>嘉宾口径，且正在删除不用的结构</td>
+</tr>
+<tr>
+<td>社区贡献者</td>
+<td align="right">两千多</td>
+<td>嘉宾口径</td>
+</tr>
+<tr>
+<td>核心维护者</td>
+<td align="right">十来个</td>
+<td>嘉宾口径</td>
+</tr>
+<tr>
+<td>Committer</td>
+<td align="right">几十个</td>
+<td>嘉宾口径</td>
+</tr>
+<tr>
+<td>Inferact 团队</td>
+<td align="right">三十多人，接近四十人</td>
+<td>访谈当时口径</td>
+</tr>
+<tr>
+<td>短投机解码猜测长度</td>
+<td align="right">一般三到五个 Token</td>
+<td>嘉宾对 EAGLE、MTP 等的概括</td>
+</tr>
+<tr>
+<td>DFlash 猜测长度示例</td>
+<td align="right">十六个 Token</td>
+<td>嘉宾举例</td>
+</tr>
+<tr>
+<td>DFlash 性能示例</td>
+<td align="right">某些模型每秒上千 Token</td>
+<td>访谈转述 vLLM 与 NVIDIA 技术博客结果，不可泛化</td>
+</tr>
+<tr>
+<td>H100 FP8 对比 16 位浮点</td>
+<td align="right">可快两倍</td>
+<td>嘉宾对硬件算力的概括，不是端到端模型加速承诺</td>
+</tr>
+<tr>
+<td>MoE 激活比例</td>
+<td align="right">万亿参数中只激活几十分之一</td>
+<td>嘉宾概括，未给单一精确比例</td>
+</tr>
+<tr>
+<td>早期开源资助</td>
+<td align="right">a16z 在 2023 年提供几十万美元级</td>
+<td>嘉宾使用“应该是”</td>
+</tr>
+<tr>
+<td>种子轮</td>
+<td align="right">1.5 亿美元</td>
+<td>节目开场陈述，保留原始口径，不扩大金额</td>
+</tr>
+<tr>
+<td>某大厂邀约</td>
+<td align="right">四位创始人每人年薪两千万美元</td>
+<td>受访者陈述，未独立核验</td>
+</tr>
+</tbody></table>
+<h2 id="关键金句（访谈原文引用）"><a href="#关键金句（访谈原文引用）" class="headerlink" title="关键金句（访谈原文引用）"></a>关键金句（访谈原文引用）</h2><p>以下引语逐字、连续复制自校正版转录；为保持可核对性，不补标点、不改大小写、不改口语重复。</p>
+<p>关于系统软件与真实使用：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">只要是一个好的软件 总会有人用的</span><br></pre></td></tr></table></figure>
+
+<p>关于个人选择：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">我觉得我追求的就是意义</span><br></pre></td></tr></table></figure>
+
+<p>关于 PagedAttention 与 vLLM 的边界：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">那其实时至今日就是vLLM它早就不是PagedAttention算法了</span><br><span class="line">它是一整个大模型推理的系统</span><br><span class="line">它是这个大模型高效运行的一个底座</span><br></pre></td></tr></table></figure>
+
+<p>关于 Coding Agent 对开源维护的冲击：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">整体上来说代码变得如此廉价</span><br><span class="line">以至于维护者他花时间去看别人的PR</span><br><span class="line">不如说他自己来让Coding Agent再写一遍</span><br></pre></td></tr></table></figure>
+
+<p>关于商业模式：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">我们不是技术外包我们不是在售卖我们工程师的时间</span><br><span class="line">我们产生的价值取决于我们为你多产生了多少Token</span><br><span class="line">为你的这些机器又节省了多少成本</span><br></pre></td></tr></table></figure>
+
+<p>关于模型结构与效率上界：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">所以说就是模型的结构它决定了推理效率的一个上界</span><br><span class="line">如果你的这个上界太低了</span><br><span class="line">那系统工程师就无力回天了</span><br></pre></td></tr></table></figure>
+
+<p>关于 Token 的非同质性：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这个Token他是带着模型的烙印的</span><br></pre></td></tr></table></figure>
+
+<p>关于第一性原理与调试：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">那么我很快就找到了一个叫做CUDA coredump的技术</span><br><span class="line">这个技术它其实存在的很久了</span><br><span class="line">但是AI infra的圈子里面知道的人非常少</span><br></pre></td></tr></table></figure>
+
+<p>关于开源模型：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">我BET开源模型</span><br><span class="line">中国模型开源我就支持中国模型</span><br><span class="line">其他国家的模型开源我也支持</span><br></pre></td></tr></table></figure>
+
+<p>关于系统彩票：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">只有被高效实现的这个算法最终才能够留下来</span><br></pre></td></tr></table></figure>
+
+<p>关于写作与理解：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果你没有办法清晰的写下来</span><br><span class="line">说明你对它还不够了解</span><br></pre></td></tr></table></figure>
+
+<h2 id="芯片设计公司系统工程师视角：从访谈观点推导一套协作框架"><a href="#芯片设计公司系统工程师视角：从访谈观点推导一套协作框架" class="headerlink" title="芯片设计公司系统工程师视角：从访谈观点推导一套协作框架"></a>芯片设计公司系统工程师视角：从访谈观点推导一套协作框架</h2><blockquote>
+<p>🧭 <strong>边界声明：本节是派生工程分析。</strong> 它依据访谈中关于 KV Cache、细粒度 MoE、动态路由、专家并行、FP8、矩阵单元、多级缓存、推理基准与第一性原理的观点，转换为芯片公司的工作清单。NPU&#x2F;GPU、DDR&#x2F;HBM、Collective、编译器接口和观测项的具体建议不是游凯超原话，也不针对任何一家公司的既有架构。</p>
+</blockquote>
+<p><strong>NPU&#x2F;GPU 架构从工作负载而不是算力峰值开始。</strong> 访谈已经给出几个必须进入架构输入的变量：Attention 的 head size、完整&#x2F;线性&#x2F;混合注意力的状态语义、MoE 专家粒度、动态路由、预填充与解码比例、投机验证长度，以及 Agent 多轮交互。芯片团队应让模型和运行时团队提供这些分布，而不是只给一个模型参数量。对矩阵单元，要验证大 GEMM、小 GEMM、分组 GEMM 和不规则批次分别能达到什么利用水平；对向量与标量单元，要验证量化缩放、路由、采样、位置编码和累加能否与矩阵计算并行。这里的目标不是预先认定 NPU 或 GPU 哪一种更好，而是确认目标负载是否抽中了该架构的硬件彩票。</p>
+<p><strong>DDR&#x2F;HBM、片上缓存与 KV Cache 要放进同一个容量和带宽模型。</strong> 访谈指出，完整注意力的 KV 状态较小且只增不改，线性注意力状态更大且会修改，混合结构更难管理；PagedAttention 的价值正是管理持续增长的中间状态。派生到芯片设计，应分别测量 KV 在片上存储、HBM 与 DDR 之间的驻留、换入换出和碎片情况，并区分预填充、逐 Token 解码、Prefix Caching 命中与未命中。不要先填入想当然的带宽数字，可以用序列长度、并发、页大小、缓存命中率和状态更新比例做扫描，找出容量受限、带宽受限与调度受限的区域，再决定片上 SRAM&#x2F;Cache、HBM 容量通道和 DDR 扩展的取舍。</p>
+<p><strong>MoE 要把互连和 Collective 当成算法接口。</strong> 细粒度专家让单个矩阵变小，动态路由让 Token 去向依赖输入，专家并行又把计算分散到多个设备。芯片、网络和运行时团队应把 Token 分发、聚合、负载倾斜和尾部专家拆开观测，明确何时需要 all-to-all 类 Collective，何时可以通过专家放置、复制或批次重排减少通信。测试不能只用均匀随机路由，因为真实输入可能形成热点；也不能只报告链路峰值带宽，还要报告小消息、多并发和计算通信重叠时的有效表现。DeepEP&#x2F;DeepGEMM 在访谈中分别对应通信与计算，这提示接口设计要允许二者协同排程，而不是两个库各自跑出最好数字。</p>
+<p><strong>量化格式必须贯穿模型、编译器、Kernel 和运行时。</strong> FP8、Block Quantization、逐 Channel Quantization、MX 格式方向以及向量单元累加，要求共同定义尺度元数据如何存储和传递、哪些算子能融合、何处需要更高精度累加、动态 Shape 是否触发回退。编译器要能表达矩阵单元与向量单元的并行，Kernel 接口要暴露分块和布局约束，运行时要识别模型权重格式并选择正确实现。任何“支持 FP8”的声明都应拆成格式可加载、算子可执行、精度可接受、端到端有收益四个层次，避免把访谈中的硬件峰值“两倍”误当作业务吞吐“两倍”。</p>
+<p><strong>Benchmark methodology（基准方法）和可观测性决定团队能否闭环。</strong> 访谈明确提醒性能测试要考虑散热、功率和硬件频率，并以 CUDA coredump 说明底层调试能力的重要性。芯片团队的基准应至少分开预填充与解码、吞吐与单请求时延、冷缓存与热缓存、Prefix 命中与未命中、短请求与长请求、稳定路由与热点路由、单机与集群；同时记录模型与量化版本、Batch、序列长度、投机策略、功耗状态和频率。观测链路需要把请求、调度批次、KV 页、Kernel、设备计数器、通信事件和错误转储关联起来，非法内存访问、静默回退、缓存失效和 Collective 长尾才能从应用层一路定位到芯片。</p>
+<h3 id="派生工程协作清单"><a href="#派生工程协作清单" class="headerlink" title="派生工程协作清单"></a>派生工程协作清单</h3><p>下表全部是依据访谈推导的<strong>定性建议</strong>，不是访谈中的事实数字。</p>
+<table>
+<thead>
+<tr>
+<th>协作面</th>
+<th>算法&#x2F;模型团队提供</th>
+<th>编译器与 Kernel 团队提供</th>
+<th>Runtime&#x2F;Infra 团队提供</th>
+<th>芯片团队需要确认</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>工作负载画像</td>
+<td>模型结构、专家数与粒度、路由分布、上下文与输出分布</td>
+<td>算子图、Shape、融合与回退路径</td>
+<td>到达率、Batch、预填充&#x2F;解码比例、Agent 交互模式</td>
+<td>各类矩阵与非矩阵负载在目标 NPU&#x2F;GPU 上的利用率</td>
+</tr>
+<tr>
+<td>KV 与内存</td>
+<td>状态大小、是否可修改、前缀稳定条件</td>
+<td>布局、页粒度、搬运与融合实现</td>
+<td>分页、淘汰、共享、Prefix Caching 策略</td>
+<td>SRAM&#x2F;Cache、HBM、DDR 各层的容量、带宽和抖动</td>
+</tr>
+<tr>
+<td>MoE 通信</td>
+<td>路由算法、精度可接受的均衡策略</td>
+<td>Grouped GEMM 与通信计算重叠</td>
+<td>专家放置、Token 重排、Collective 调度</td>
+<td>互连在小消息、热点、all-to-all 类模式下的有效表现</td>
+</tr>
+<tr>
+<td>量化</td>
+<td>精度预算、权重&#x2F;激活量化粒度</td>
+<td>FP8&#x2F;MX 等格式、累加精度、融合 Kernel</td>
+<td>格式识别、版本兼容、动态回退</td>
+<td>矩阵与向量单元能否协同，元数据开销是否可控</td>
+</tr>
+<tr>
+<td>投机解码</td>
+<td>草稿策略、置信度与接受标准</td>
+<td>多 Token 验证 Kernel</td>
+<td>调度、批次干扰、拒绝后的恢复</td>
+<td>猜测长度变化时的真实吞吐、时延和能耗</td>
+</tr>
+<tr>
+<td>Harness</td>
+<td>前缀稳定规则、工具与时间信息布局</td>
+<td>可缓存边界的表达能力</td>
+<td>缓存命中、流量错峰、会话状态</td>
+<td>缓存压力和突发流量是否触发系统退化</td>
+</tr>
+<tr>
+<td>基准</td>
+<td>任务质量约束</td>
+<td>算子级性能与正确性</td>
+<td>端到端吞吐、时延、可靠性</td>
+<td>功耗、温度、频率和设备间差异是否被记录</td>
+</tr>
+<tr>
+<td>调试</td>
+<td>可复现输入和预期行为</td>
+<td>Kernel 断言、转储和符号信息</td>
+<td>请求到设备事件的 Trace ID</td>
+<td>错误转储、性能计数器和跨芯片链路是否可观测</td>
+</tr>
+</tbody></table>
+<h3 id="推荐的联合评审节奏"><a href="#推荐的联合评审节奏" class="headerlink" title="推荐的联合评审节奏"></a>推荐的联合评审节奏</h3><ol>
+<li><strong>模型提案评审</strong>：算法团队提交结构与质量收益，同时给出 head size、专家粒度、状态更新、量化和目标 Harness；系统团队先做可实现性画像，不等模型定型后再被动接收。</li>
+<li><strong>编译器&#x2F;Kernel 原型评审</strong>：在小规模硬件上验证主要算子、数据布局和回退路径，明确哪些收益依赖专用指令，哪些可通过软件获得。</li>
+<li><strong>Runtime 集成评审</strong>：加入 Continuous Batching、Paged KV、Prefix Caching、投机解码和专家并行，检查单算子收益在真实调度下是否保留。</li>
+<li><strong>芯片前冻结评审</strong>：用多模型、多 Shape、热点路由和缓存失效场景做压力测试，把未覆盖的工作负载列为明确风险，而不是用平均吞吐掩盖。</li>
+<li><strong>发布后回灌</strong>：将线上 Token 产出、时延尾部、缓存命中、通信长尾、功耗和故障转储回传给下一轮算法、编译器与芯片设计。访谈强调快速迭代，这个闭环比一次性押中某个模型更接近可持续能力。</li>
+</ol>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>这场访谈的价值不只在于解释 PagedAttention 或复述 vLLM 的成长史。游凯超给出了一套连贯的技术与组织判断：大模型推理进入专用化阶段后，模型结构、Kernel、运行时、Harness 和芯片必须围绕真实工作负载协同；开源底座若要长期吸收这种复杂性，也必须有基金会提供开源治理，有公司提供人力、法务、集群和商业闭环，并由掌握历史上下文的维护者持续做取舍。</p>
+<p>他的未来判断依然带有鲜明个人立场：百万级上下文可能已足够多数人类交互，开源模型最终会赢，模型能力会逐步商品化，Token 供需会在供给效率和需求规划的共同作用下趋于平衡。这些都不是确定结论。更稳妥、也更可操作的部分，是访谈反复强调的工作方法：从第一性原理理解负载和硬件，测量可复现的真实收益，删掉不再服务主线的复杂性，让算法、系统、应用框架和芯片团队在设计早期交换约束。对芯片与系统团队来说，真正需要保留的是可复现的工作负载、跨层接口和发布后的反馈闭环；下一种模型结构出现时，团队才能判断哪些部件应当复用，哪些设计已经不再符合新的 Token 生产方式。</p>
+<blockquote>
+<p>⚠️ <strong>再次提示：本文仅为访谈观点摘要与工程化解读，不构成投资建议。</strong> 融资、公司发展、技术性能、市场格局和未来预测应以正式披露、可复现实验及后续事实为准。</p>
+</blockquote>
+<h2 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h2><ul>
+<li>vllm-anatomy</li>
+<li>uber-software-factory</li>
+<li>lwn-tailcall-h3c-metal-2026</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://weiasd.github.io/2026/11/03/vllm-inferact-you-kaichao/" data-id="cuidJwXY61sSxBEC4BG8Ef_tr" data-title="游凯超谈 vLLM、Inferact、开源 AI Infra 与模型 Co-design：近三小时访谈详细总结" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI-Infra/" rel="tag">AI Infra</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vLLM/" rel="tag">vLLM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%A8%E7%90%86%E4%BC%98%E5%8C%96/" rel="tag">推理优化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%92%AD%E5%AE%A2%E6%80%BB%E7%BB%93/" rel="tag">播客总结</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/03/28/%E8%83%A1%E4%B9%B1%E5%8F%A8%E5%8F%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">胡乱叨叨</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%92%AD%E5%AE%A2%E6%80%BB%E7%BB%93/">播客总结</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI-Infra/" rel="tag">AI Infra</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vLLM/" rel="tag">vLLM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A8%E7%90%86%E4%BC%98%E5%8C%96/" rel="tag">推理优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%92%AD%E5%AE%A2%E6%80%BB%E7%BB%93/" rel="tag">播客总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%B2%E8%A8%80/" rel="tag">闲言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AI-Infra/" style="font-size: 10px;">AI Infra</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/vLLM/" style="font-size: 10px;">vLLM</a> <a href="/tags/%E6%8E%A8%E7%90%86%E4%BC%98%E5%8C%96/" style="font-size: 10px;">推理优化</a> <a href="/tags/%E6%92%AD%E5%AE%A2%E6%80%BB%E7%BB%93/" style="font-size: 10px;">播客总结</a> <a href="/tags/%E9%97%B2%E8%A8%80/" style="font-size: 10px;">闲言</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">November 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/11/03/vllm-inferact-you-kaichao/">游凯超谈 vLLM、Inferact、开源 AI Infra 与模型 Co-design：近三小时访谈详细总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/28/%E8%83%A1%E4%B9%B1%E5%8F%A8%E5%8F%A8/">胡乱叨叨</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/25/m1%E5%AE%89%E8%A3%85ubuntu/">ubuntu</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/10/2020%E6%80%BB%E7%BB%93/">2020总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/09/hexo%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">hexo遇到的坑</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 weiasd<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
